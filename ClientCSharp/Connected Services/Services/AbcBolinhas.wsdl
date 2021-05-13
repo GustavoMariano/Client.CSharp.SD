@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://localhost:8888/" name="AbcBolinhas" targetNamespace="http://localhost:8888/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Exemplo usando SOAP através de PySimpleSoap</wsdl:documentation>
+  <wsdl:types>
+    <xsd:schema elementFormDefault="qualified" targetNamespace="http://localhost:8888/">
+      <xsd:element name="verifica_NumeroPar">
+        <xsd:complexType>
+          <xsd:all>
+            <xsd:element name="in0" type="xsd:int" />
+          </xsd:all>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="verifica_NumeroParResponse">
+        <xsd:complexType>
+          <xsd:all>
+            <xsd:element name="out0" type="xsd:boolean" />
+          </xsd:all>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="valida_CPF">
+        <xsd:complexType>
+          <xsd:all>
+            <xsd:element name="in0" type="xsd:string" />
+          </xsd:all>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="valida_CPFResponse">
+        <xsd:complexType>
+          <xsd:all>
+            <xsd:element name="out0" type="xsd:boolean" />
+          </xsd:all>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="math_operation">
+        <xsd:complexType>
+          <xsd:all>
+            <xsd:element name="operador" type="xsd:string" />
+            <xsd:element name="num1" type="xsd:int" />
+            <xsd:element name="num2" type="xsd:int" />
+          </xsd:all>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="math_operationResponse">
+        <xsd:complexType>
+          <xsd:all>
+            <xsd:element name="out1" type="xsd:string" />
+          </xsd:all>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="verifica_NumeroParInput">
+    <wsdl:part name="parameters" element="tns:verifica_NumeroPar" />
+  </wsdl:message>
+  <wsdl:message name="verifica_NumeroParOutput">
+    <wsdl:part name="parameters" element="tns:verifica_NumeroParResponse" />
+  </wsdl:message>
+  <wsdl:message name="valida_CPFInput">
+    <wsdl:part name="parameters" element="tns:valida_CPF" />
+  </wsdl:message>
+  <wsdl:message name="valida_CPFOutput">
+    <wsdl:part name="parameters" element="tns:valida_CPFResponse" />
+  </wsdl:message>
+  <wsdl:message name="math_operationInput">
+    <wsdl:part name="parameters" element="tns:math_operation" />
+  </wsdl:message>
+  <wsdl:message name="math_operationOutput">
+    <wsdl:part name="parameters" element="tns:math_operationResponse" />
+  </wsdl:message>
+  <wsdl:portType name="AbcBolinhasPortType">
+    <wsdl:operation name="verifica_NumeroPar">
+      <wsdl:input message="tns:verifica_NumeroParInput" />
+      <wsdl:output message="tns:verifica_NumeroParOutput" />
+    </wsdl:operation>
+    <wsdl:operation name="valida_CPF">
+      <wsdl:input message="tns:valida_CPFInput" />
+      <wsdl:output message="tns:valida_CPFOutput" />
+    </wsdl:operation>
+    <wsdl:operation name="math_operation">
+      <wsdl:input message="tns:math_operationInput" />
+      <wsdl:output message="tns:math_operationOutput" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="AbcBolinhasBinding" type="tns:AbcBolinhasPortType">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="verifica_NumeroPar">
+      <soap:operation soapAction="http://localhost:8888/verifica_NumeroPar" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="valida_CPF">
+      <soap:operation soapAction="http://localhost:8888/valida_CPF" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="math_operation">
+      <soap:operation soapAction="http://localhost:8888/math_operation" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="AbcBolinhasService">
+    <wsdl:documentation>Exemplo usando SOAP através de PySimpleSoap</wsdl:documentation>
+    <wsdl:port name="AbcBolinhas" binding="tns:AbcBolinhasBinding">
+      <soap:address location="http://localhost:8888/" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
